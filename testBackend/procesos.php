@@ -11,7 +11,7 @@ $sql->Conectar();
 $ciudades = array();
 $buscador = array();
 
-
+$ciudades1 = array();
 
 /////////////CIUDADES  DE RESERVA///////////////////
 
@@ -82,22 +82,22 @@ if (isset($_POST['ciudadOrigenConsulta']) && isset($_POST['ciudadOrigenConsultaD
     $fechaFinal=$_POST['fechaFinal'];
     
     
-    $cadena = "SELECT * FROM aerolineawendy.consultavuelos WHERE DATE(fecha_salida) BETWEEN '$fechaInicial' AND '$fechaFinal'";
+    $cadena1 = "SELECT * FROM aerolineawendy.consultavuelos WHERE ciudad_origen_id='1' AND ciudad_destino_id='4'";
     
-    $result = $sql->Consultar($cadena);
+    $result1 = $sql->Consultar($cadena1);
     $num_r = $sql->Contar_filas($result);
     if ($num_r > 0) {
         
         
-        while ($row = $sql->Resultados($result)) {
-            $rowArray['fecha_salida'] = $row['fecha_salida'];
-            $rowArray['duracion'] = $row['duracion'];
-            $rowArray['ciudadOrigen'] = $row['ciudadOrigen'];
-            $rowArray['ciudadDestino'] = $row['ciudadDestino'];
+        while ($row1 = $sql->Resultados($result1)) {
+            $rowArray1['fecha_salida'] = $row1['fecha_salida'];
+            $rowArray1['duracion'] = $row1['duracion'];
+            $rowArray1['ciudadOrigen'] = $row1['ciudadOrigen'];
+            $rowArray1['ciudadDestino'] = $row1['ciudadDestino'];
 
-            array_push($ciudades, $rowArray);
+            array_push($ciudades1, $rowArray1);
         }
-        echo json_encode($ciudades, JSON_UNESCAPED_UNICODE);
+        echo json_encode($ciudades1, JSON_UNESCAPED_UNICODE);
     }
 }
 
