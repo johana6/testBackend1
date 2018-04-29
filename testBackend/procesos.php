@@ -25,7 +25,7 @@ if (isset($_GET['consulta_ciudad'])) {
         $cadena = "SELECT ciudad_destino_id as id, ciudades.nombre,trayectos.id as trayectoid  FROM aerolineawendy.trayectos 
 JOIN ciudades ON trayectos.ciudad_destino_id=ciudades.ID where trayectos.ciudad_origen_id='$ciudad' group by nombre";
     } else {
-        $cadena = "SELECT * FROM aerolineawendy.ciudades LIMIT 5";
+        $cadena = "SELECT * FROM aerolineawendy.ciudades";
     }
     
     
@@ -51,9 +51,9 @@ if (isset($_GET['ciudadConsulta'])) {
         
         $ciudad = $_GET['ciudadOrigenConsulta'];
         
-         $cadena = "SELECT * FROM aerolineawendy.ciudades WHERE id !='$ciudad' LIMIT 5";
+         $cadena = "SELECT * FROM aerolineawendy.ciudades WHERE id !='$ciudad'";
     } else {
-         $cadena = "SELECT * FROM aerolineawendy.ciudades  LIMIT 5";
+         $cadena = "SELECT * FROM aerolineawendy.ciudades";
     }
     
     
